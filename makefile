@@ -16,14 +16,14 @@ build: check
 configure:
 	which bun || curl -fsSL https://bun.sh/install | bash
 	bun --bun i && \
-	bunx --bun cap add android && \
+	test -d android || bunx --bun cap add android
 
 sync:
-	bunx --bun cap run android -l
+	bunx --bun cap run android -l --port 5173
 
 open:
 	bunx --bun cap open android
-
+	
 dev:
 	bunx --bun vite & \
 	bunx --bun svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \
