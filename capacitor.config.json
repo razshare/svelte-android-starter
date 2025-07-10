@@ -1,0 +1,14 @@
+{
+    "appId": "com.example.app",
+    "appName": "app",
+    "webDir": "dist",
+    "plugins": {
+        "SplashScreen": {
+            "launchAutoHide": false
+        }
+    },
+    "server": {
+        "url": "http//192.168.1.98:5173",
+        "cleartext": true
+    }
+}
