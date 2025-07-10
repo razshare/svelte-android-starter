@@ -5,6 +5,7 @@
       "name": "my-app",
       "devDependencies": {
         "@capacitor/android": "7.4.1",
+        "@capacitor/app": "^7.0.1",
         "@capacitor/camera": "7.0.1",
         "@capacitor/cli": "7.4.1",
         "@capacitor/core": "7.4.1",
@@ -35,6 +36,8 @@
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
 
     "@capacitor/android": ["@capacitor/android@7.4.1", "", { "peerDependencies": { "@capacitor/core": "^7.4.0" } }, "sha512-/LxreKsXt6oZnS7gOpHz2WvRuZzwaLpGOKqomvBTliISTQaKEwqLkX1k665fqZquuJjP8RKnkz8thO6UZJTfbg=="],
+
+    "@capacitor/app": ["@capacitor/app@7.0.1", "", { "peerDependencies": { "@capacitor/core": ">=7.0.0" } }, "sha512-ArlVZAAla4MwQoKh26x2AaTDOBh5Vhp1VhMKR3RwqZSsZnazKTFGNrPbr9Ez5r1knnEDfApyjwp1uZnXK1WTYQ=="],
 
     "@capacitor/camera": ["@capacitor/camera@7.0.1", "", { "peerDependencies": { "@capacitor/core": ">=7.0.0" } }, "sha512-gDUFsYlhMra5VVOa4iJV6+MQRhp3VXpTLQY4JDATj7UvoZ8Hv4DG8qplPL9ufUFNoR3QbDDnf8+gbQOsKdkDjg=="],
 

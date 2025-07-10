@@ -5,5 +5,6 @@
 
 <Layout>
     <span>Welcome to the default view.</span>
-    <a {...href("Todos")}>Click me to navigate away</a>
+    <br />
+    <a {...href("Todos")}>Click me</a> to navigate away.
 </Layout>
