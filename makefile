@@ -7,9 +7,13 @@ test: build
 run: build
 	bunx --bun cap run android
 
-build: check
+build: check touch copy
 	bunx --bun vite build
 
+sync: touch copy
+	bunx --bun cap run android -l --port 5173
+
+	
 ########################
 ###### Primitives ######
 ########################
@@ -18,12 +22,16 @@ configure:
 	bun --bun i && \
 	test -d android || bunx --bun cap add android
 
-sync:
-	bunx --bun cap run android -l --port 5173
-
 open:
 	bunx --bun cap open android
-	
+
+copy:
+	bunx cap copy
+
+touch:
+	mkdir dist -p
+	touch dist/index.html
+
 dev:
 	bunx --bun vite & \
 	bunx --bun svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \

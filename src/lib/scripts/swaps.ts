@@ -40,8 +40,9 @@ function swap(view: View<unknown>): SwapAction {
 
             if (update) {
                 const id = uuid()
+                const url = `${String(swapViewName)}`
                 record[id] = this
-                window.history.pushState(id, "", `${String(swapViewName)}`)
+                window.history.pushState(id, "", url)
             }
         },
     }
