@@ -1,9 +1,9 @@
 <script>
     import Layout from "$lib/components/Layout.svelte"
-    import { href } from "$lib/scripts/href.ts"
+    import { href } from "$lib/scripts/href"
 </script>
 
 <Layout>
     <span>Welcome to the default view.</span>
-    <a {...href()}>Click me to navigate away</a>
+    <a {...href("Todos")}>Click me to navigate away</a>
 </Layout>

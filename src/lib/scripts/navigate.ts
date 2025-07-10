@@ -1,13 +1,14 @@
 import { getContext } from "svelte"
-import { swaps } from "$lib/scripts/swaps"
-import type { View } from "$lib/types/view"
 import { route } from "$lib/scripts/route"
+import { swaps } from "$lib/scripts/swaps"
+import type { ViewName } from "$lib/types/ViewName"
+import type { View } from "$lib/types/View"
 
 export async function navigate(
-    viewName: string,
-    data: Record<string, any> = {},
-): Promise<void> {
-    const view = getContext("view") as View<never>
-    route(view)
-    await swaps.swap(view).withName(viewName).withData(data).play(true)
+    view: ViewName,
+    data: Record<string, unknown> = {},
+) {
+    const viewReference = getContext("view") as View<unknown>
+    route(viewReference)
+    return swaps.swap(viewReference).withView(view).withData(data).play(true)
 }

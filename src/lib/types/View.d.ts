@@ -1,4 +1,4 @@
 export type View<T> = {
-    name: string
+    name: ViewName
     data: T
 }

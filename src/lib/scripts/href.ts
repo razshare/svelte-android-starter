@@ -1,19 +1,21 @@
+import type { View } from "$lib/types/View"
 import { getContext } from "svelte"
-import type { View } from "$lib/types/view"
-import { route } from "$lib/scripts/route.ts"
-import { swaps } from "$lib/scripts/swaps.ts"
+import { swaps } from "$lib/scripts/swaps"
+import { route } from "$lib/scripts/route"
+import type { ViewName } from "$lib/types/ViewName"
 
-export function href(viewName = ""): {
-    href: string
-    onclick: (mouseEvent: MouseEvent) => void
-} {
-    const view = getContext("view") as View<unknown>
-    route(view)
+export function href(view: ViewName, data: Record<string, unknown> = {}) {
+    const viewReference = getContext("view") as View<unknown>
+    route(viewReference)
     return {
         href: "#",
         async onclick(mouseEvent: MouseEvent) {
+            await swaps
+                .swap(viewReference)
+                .withView(view)
+                .withData(data)
+                .play(true)
             mouseEvent.preventDefault()
-            await swaps.swap(view).withName(viewName).play(true)
             return false
         },
     }

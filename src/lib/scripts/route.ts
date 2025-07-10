@@ -1,5 +1,5 @@
-import type { View } from "$lib/types/view"
-import { swaps } from "$lib/scripts/swaps.ts"
+import { swaps } from "$lib/scripts/swaps"
+import type { View } from "$lib/types/View"
 
 let started = false
 
@@ -15,7 +15,7 @@ export function route(view: View<unknown>): void {
         const current = swaps.find(id)
 
         if (!current) {
-            await swaps.swap(view).withName("Default").play(false)
+            await swaps.swap(view).withView("Default").play(false)
             return
         }
 

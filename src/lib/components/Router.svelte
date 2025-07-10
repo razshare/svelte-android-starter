@@ -1,8 +1,8 @@
 <script lang="ts">
     import { setContext, type Component } from "svelte"
-    import { views } from "$lib/views.ts"
+    import { views } from "$lib/views"
     import ViewLoader from "$lib/components/ViewLoader.svelte"
-    import type { View } from "$lib/types/view"
+    import type { View } from "$lib/types/View"
     // @ts-ignore
     const components = views as Record<string, Component>
     let { name, data } = $props() as View<Record<string, unknown>>
