@@ -1,6 +1,5 @@
 /.idea
 /node_modules
-/.vscode/
 /*.map
 /.DS_Store
 /.sourcemaps

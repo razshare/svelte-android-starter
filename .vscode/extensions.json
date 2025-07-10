@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "Chanzhaoyu.svelte-5-snippets",
+    "svelte.svelte-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.makefile-tools"
+  ]
+}
