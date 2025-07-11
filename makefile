@@ -9,14 +9,26 @@ run: build
 
 build: check touch copy
 	bunx --bun vite build
+	bunx cap build android \
+	--keystorepath dev.keystore \
+	--keystorepass 123456 \
+	--keystorealias dev \
+	--keystorealiaspass 123456 \
+	--androidreleasetype APK
+
+run: touch copy
+	bunx --bun cap run android
 
 sync: touch copy
 	bunx --bun cap run android -l --port 5173
-
 	
 ########################
 ###### Primitives ######
 ########################
+keystore:
+	rm dev.keystore -fr
+	keytool -genkey -v -keystore android/dev.keystore -alias dev -keyalg RSA -keysize 2048 -validity 10000
+
 configure:
 	which bun || curl -fsSL https://bun.sh/install | bash
 	bun --bun i && \
