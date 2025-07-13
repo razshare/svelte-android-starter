@@ -59,7 +59,6 @@ clean:
 	rm dist -fr
 	rm .vite -fr
 	rm node_modules -fr
-	rm android -fr
 
 format:
 	npx prettier --write .
@@ -69,9 +68,6 @@ install:
 
 update:
 	npm update
-
-android:
-	npx cap add android
 
 hooks:
 	printf "#!/usr/bin/env bash\n" > .git/hooks/pre-commit
