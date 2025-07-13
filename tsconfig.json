@@ -4,6 +4,7 @@
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "allowImportingTsExtensions": true,
+        "allowArbitraryExtensions": true,
         "strict": true,
         "moduleResolution": "bundler",
         "target": "ESNext",

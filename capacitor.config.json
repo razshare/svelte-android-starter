@@ -1,13 +1,13 @@
 {
-    "appId": "com.example.app",
-    "appName": "app",
-    "webDir": "dist",
-    "plugins": {
-        "SplashScreen": {
-            "launchAutoHide": false
-        }
-    },
-    "server": {
-        "cleartext": true
+  "appId": "com.example.app",
+  "appName": "app",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
     }
+  },
+  "server": {
+    "cleartext": true
+  }
 }

@@ -1,72 +1,77 @@
 ########################
 ###### Composites ######
 ########################
-test: build
+test: package
 #	Todo
 
-run: build
-	bunx --bun cap run android
-
 build: check touch copy
-	bunx --bun vite build
-	bunx cap build android \
+	npx vite build
+	npx cap build android \
 	--keystorepath dev.keystore \
 	--keystorepass 123456 \
 	--keystorealias dev \
 	--keystorealiaspass 123456 \
 	--androidreleasetype APK
 
+package: check
+	npx vite build
+	
 run: touch copy
-	bunx --bun cap run android
+	npx cap run android
 
 sync: touch copy
-	bunx --bun cap run android -l --port 5173
+	npx cap run android -l --port 5173
 	
 ########################
 ###### Primitives ######
 ########################
 keystore:
-	rm dev.keystore -fr
+	rm android/dev.keystore -fr
 	keytool -genkey -v -keystore android/dev.keystore -alias dev -keyalg RSA -keysize 2048 -validity 10000
 
+
 configure:
-	which bun || curl -fsSL https://bun.sh/install | bash
-	bun --bun i && \
-	test -d android || bunx --bun cap add android
+	npm i && \
+	test -d android || npx cap add android
 
 open:
-	bunx --bun cap open android
+	npx cap open android
 
 copy:
-	bunx cap copy
+	npx cap copy
+	npx cap sync
 
 touch:
 	mkdir dist -p
 	touch dist/index.html
 
 dev:
-	bunx --bun vite & \
-	bunx --bun svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \
+	npx vite & \
+	npx svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \
 	wait
 
 check:
-	bunx --bun eslint . && \
-	bunx --bun svelte-check --tsconfig ./tsconfig.json
+	npx eslint . && \
+	npx svelte-check --tsconfig ./tsconfig.json
 
 clean:
 	go clean
 	rm dist -fr
 	rm .vite -fr
 	rm node_modules -fr
+	rm android -fr
 
 format:
-	bunx --bun prettier --write .
+	npx prettier --write .
 
 install:
-	bun install
+	npm install
 
 update:
-	bun update
+	npm update
+
+android:
+	npx cap add android
 
 hooks:
 	printf "#!/usr/bin/env bash\n" > .git/hooks/pre-commit
