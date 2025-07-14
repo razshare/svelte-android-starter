@@ -5,8 +5,8 @@ test: package
 #	Todo
 
 build: check touch copy
-	npx vite build
-	npx cap build android \
+	bunx --bun vite build
+	bunx --bun cap build android \
 	--keystorepath dev.keystore \
 	--keystorepass 123456 \
 	--keystorealias dev \
@@ -14,13 +14,13 @@ build: check touch copy
 	--androidreleasetype APK
 
 package: check
-	npx vite build
+	bunx --bun vite build
 	
 run: touch copy
-	npx cap run android
+	bunx --bun cap run android
 
 sync: touch copy
-	npx cap run android -l --port 5173
+	bunx --bun cap run android -l --port 5173
 	
 ########################
 ###### Primitives ######
@@ -31,28 +31,28 @@ keystore:
 
 
 configure:
-	npm i && \
-	test -d android || npx cap add android
+	bun --bun i && \
+	test -d android || bunx --bun cap add android
 
 open:
-	npx cap open android
+	bunx --bun cap open android
 
 copy:
-	npx cap copy
-	npx cap sync
+	bunx --bun cap copy
+	bunx --bun cap sync
 
 touch:
 	mkdir dist -p
 	touch dist/index.html
 
 dev:
-	npx vite & \
-	npx svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \
+	bunx --bun vite & \
+	bunx --bun svelte-check --tsconfig ./tsconfig.json --watch --preserveWatchOutput & \
 	wait
 
 check:
-	npx eslint . && \
-	npx svelte-check --tsconfig ./tsconfig.json
+	bunx --bun eslint . && \
+	bunx --bun svelte-check --tsconfig ./tsconfig.json
 
 clean:
 	go clean
@@ -61,13 +61,13 @@ clean:
 	rm node_modules -fr
 
 format:
-	npx prettier --write .
+	bunx --bun prettier --write .
 
 install:
-	npm install
+	bun --bun install
 
 update:
-	npm update
+	bun --bun update
 
 hooks:
 	printf "#!/usr/bin/env bash\n" > .git/hooks/pre-commit
